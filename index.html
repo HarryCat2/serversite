@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html>
     
     <!--Title for tab-->
@@ -13,28 +14,37 @@
 
         <!--quick CSS code-->
         <style>
+            
+            body {
+                background-color: rgb(42, 53, 68);
+            }
+
+        /*---Text---*/
+
             /*Title*/
             h1 {
-                text-align: right;
-                font-size:50px;
+                text-align: center;
+                font-size:70px;
                 font-family: 'tempest sans itc';
+                padding-top: 12%;
+                padding-right: 50%;
             }
-            /*bold*/
-            strong {
-                font-weight: Bolder;
-                font-size: 20px;
-                text-align: center;
+         
+
+        /*---elements---*/
+
+            /*div block separator under Title*/
+
+            .DivBlock1 {
+
+                background-color: rgba(0, 0, 0, 0.493);
+                display: inline-block;
+                padding-top: 12%;
+                margin: 0;
+
             }
-            /*Paragraphs*/
-            p {
-                text-align: center;
-            }
-            /*Icons*/
-            i {
-                display: inline;
-                float: left;
-            }
-            /*center area*/
+
+        /*---drop down button below---*/
 
             /* Dropdown Button */
             .dropbtn {
@@ -80,6 +90,53 @@
 
             * {box-sizing:border-box}
 
+        /* IP Button */
+
+        .IPbutton {
+            height:30px;
+            width:150px;
+
+            border-radius:8px;
+            font-size:20px;
+            font-family: 'Oswald', sans-serif;
+            height:51px;
+            cursor: pointer;
+            background-color:rgb(179, 191, 245);
+        }
+
+    /*---Container Image For Backdrop + Text---*/
+
+        /* Container holding the image and the text */
+        .container {
+            position: relative;
+            text-align: center;
+        }
+
+        /* Off Centered title */
+          .off-centered {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size:70px;
+            font-family: 'tempest sans itc';
+            padding-top: 12%;
+            padding-right: 50%;
+        }
+
+         /* Off Centered subtitle */
+         .off-centered-subtitle {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 20px;
+            padding-right: 50%;
+            font-family: 'tempest sans itc';
+            padding-top: 25%;
+
+        }
+
         </style>
 
 
@@ -90,29 +147,50 @@
         <!--Bars Icon, using fontawsome.com-->
 
         <!--Pages Icon-->
-        <div class="dropdown">
-            <button class="dropbtn"><i class="fa-solid fa-bars" style="font-size:24px;"></i></button>
-            <div class="dropdown-content">
-                <a href="index.html">Home</a>
-                <a href="games.html">Games</a>
-                <a href="bedrock.html">Bedrock?</a>
-                <a href="datapacks.html">Datapacks</a>
-                <a href="plugins.html">Plugins</a>
-                <a href="bugs&suggestions.html">Bugs</a>
-                
-              
-            </div>
+            <div class="dropdown">
+                <button class="dropbtn"><i class="fa-solid fa-bars" style="font-size:24px;"></i></button>
+                <div class="dropdown-content">
+                    <a href="index.html">Home</a>
+                    <a href="games.html">Games</a>
+                    <a href="bedrock.html">Bedrock?</a>
+                    <a href="datapacks.html">Datapacks</a>
+                    <a href="plugins.html">Plugins</a>
+                    <a href="bugs&suggestions.html">Bugs</a>
+                </div>
           </div>
+        
+        <!--IP Button-->
 
-        <!--title for page-->
-        <h1 style="font-family: tempus sans itc;">CHILLCRAFT</h1>
+        <div align left>
+            
+            <button style="font-family: 'tempest sans itc" class="IPbutton" onclick="copyToClipboard('#p1')">Chill</button>
+            <script>
+                function copyToClipboard(element) {
+                    var $temp = $("<input>");
+                    $("body").append($temp);
+                    $temp.val($(element).text()).select();
+                    document.execCommand("copy");
+                    $temp.remove();
+                }
+            </script>
+        </div>
+        
+        <!--Title, Backdrop, Subtitle-->
+
+        <div class="container">
+            <img src="https://imgur.com/a/ygtl0Gs" style= "width:100%">
+            <div class="off-centered">
+                <h1 style="font-family: tempus sans itc;">CHILLCRAFT</h1>
+            </div>
+
+            <div class="off-centered-subtitle">
+                <p class="subtitle">class</p>
+            </div>
+        </div>
+
 
         <!--Reference for header, temp code-->
         <p style="font-family:tempus sans itc; font-size: x-large;">Reference for header <a href="https://codepen.io/osublake/pen/NdEONL" target="_blank" rel="noopener noreferrer">here</a>.</p>
-
-        <div>
-            
-        </div>
 
     </body>
 </html>
