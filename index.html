@@ -16,20 +16,31 @@
         <style>
             
             body {
-                background-color: rgba(43, 50, 61, 1);
+                background-color: rgb(43, 50, 61);
             }
 
         /*---Text---*/
 
             /*Title*/
-            h1 {
+            header {
                 text-align: center;
                 font-size:70px;
                 font-family: 'tempest sans itc';
                 padding-top: 12%;
                 padding-right: 50%;
+                font-weight: bold;
+                
+                
             }
          
+            .Game-Title-Dungeons {
+
+                font-size: 50px;
+                font-family: 'tempest sans itc';
+                font-weight: bold;
+                padding-top: -100px;
+                overflow: auto;
+            }
 
         /*---elements---*/
 
@@ -52,6 +63,16 @@
                 box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
 
             }
+            
+
+            .shape-container {
+
+                height: 500px;
+                width: 90%;
+                background-color: rgba(50, 64, 91, 0.589);
+                border-radius: 10px;
+                margin: 90px;
+            }
 
         /*---drop down button below---*/
 
@@ -66,18 +87,24 @@
 
             /* The container <div> - needed to position the dropdown content */
             .dropdown {
-                position: relative;
+                position: absolute;
+                top: 15px;
+                left: 110px;
                 display: inline-block;
+                border-radius:8px;
             }
 
             /* Dropdown Content (Hidden by Default) */
             .dropdown-content {
                 display: none;
+                border-radius:8px;
                 position: absolute;
-                background-color: #f1f1f1;
+                background-color: #f1f1f136;
                 min-width: 160px;
                 box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
                 z-index: 1;
+                border-color: rgb(0, 0, 0);
+                border
             }
 
             /* Links inside the dropdown */
@@ -86,6 +113,7 @@
                 padding: 12px 16px;
                 text-decoration: none;
                 display: block;
+                border-radius: 8px;
             }
 
             /* Change color of dropdown links on hover */
@@ -104,7 +132,9 @@
         .IPbutton {
             height:30px;
             width:150px;
-
+            position: absolute;
+            top: 10px;
+            right: 110px;
             border-radius:8px;
             font-size:20px;
             font-family: 'Oswald', sans-serif;
@@ -155,8 +185,20 @@
     <body> 
         
         <!--Bars Icon, using fontawsome.com-->
+        
+        <!--Title, Backdrop, Subtitle, Pages, IP Button-->
 
-        <!--Pages Icon-->
+        <div class="container">
+            <img src="images/title-blur.jpg" class="title-blur-css">
+            <div class="off-centered">
+                <header style="font-family: tempus sans itc">CHILLCRAFT</header>
+            </div>
+
+            <div class="off-centered-subtitle">
+                <p class="subtitle">welcome to chillcraft!</p>
+            </div>
+
+            <!--Pages Icon-->
             <div class="dropdown">
                 <button class="dropbtn"><i class="fa-solid fa-bars" style="font-size:24px;"></i></button>
                 <div class="dropdown-content">
@@ -167,37 +209,22 @@
                     <a href="plugins.html">Plugins</a>
                     <a href="bugs&suggestions.html">Bugs</a>
                 </div>
-          </div>
-        
-        <!--IP Button-->
+            </div>
 
-        <div align left>
-            
+            <!--IP Button-->
             <button style="font-family: 'tempest sans itc" class="IPbutton" onclick="copyToClipboard('#p1')">Chill</button>
-            <script>
-                function copyToClipboard(element) {
-                    var $temp = $("<input>");
-                    $("body").append($temp);
-                    $temp.val($(element).text()).select();
-                    document.execCommand("copy");
-                    $temp.remove();
-                }
-            </script>
-        </div>
-        
-        <!--Title, Backdrop, Subtitle-->
 
-        <div class="container">
-            <img src="images/title-blur.jpg" class="title-blur-css">
-            <div class="off-centered">
-                <h1 style="font-family: tempus sans itc">CHILLCRAFT</h1>
-            </div>
-
-            <div class="off-centered-subtitle">
-                <p class="subtitle">welcome to chillcraft!</p>
-            </div>
         </div>
 
+
+       
+
+        <div class="shape-container">
+
+            <h1 class="Game-Title-Dungeons">Factions</h1>
+
+
+        </div>
 
         <!--Reference for header, temp code-->
         <p style="font-family:tempus sans itc; font-size: x-large;">Reference for header <a href="https://codepen.io/osublake/pen/NdEONL" target="_blank" rel="noopener noreferrer">here</a>.</p>
