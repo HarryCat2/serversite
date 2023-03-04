@@ -1,0 +1,181 @@
+body {
+    background-color: rgb(43, 50, 61);
+}
+
+/*---Text---*/
+
+/*Title*/
+header {
+    text-align: center;
+    font-size:70px;
+    font-family: 'tempest sans itc';
+    padding-top: 12%;
+    padding-right: 50%;
+    font-weight: bold;
+}
+
+.Game-Title-Dungeons {
+
+    font-size: 50px;
+    font-family: 'tempest sans itc';
+    font-weight: bold;
+    padding-top: -100px;
+    overflow: auto;
+}
+
+/*---elements---*/
+
+    /*div block separator under Title*/
+
+    .DivBlock1 {
+
+        background-color: rgba(0, 0, 0, 0.493);
+        display: inline-block;
+        padding-top: 12%;
+        margin: 0;
+    }
+
+    .title-blur-css {
+
+        width: 90%;
+        height: 90%;
+        border-radius: 10px;
+        box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    }
+    
+
+    .shape-container {
+
+        height: 500px;
+        width: 90%;
+        background-color: rgba(50, 64, 91, 0.589);
+        border-radius: 10px;
+        margin: 90px;
+    }
+
+    /* header reference */
+    #header-ref {
+
+        font-family:tempus sans itc; 
+        font-size: x-large
+    }
+
+    /* chillcarft name */
+    #name {
+
+        font-family: tempus sans itc
+    }
+
+/*---drop down button below---*/
+
+    /* Dropdown Button */
+    .dropbtn {
+        background-color: #04aa6d00;
+        color: black;
+        padding: 16px;
+        font-size: 16px;
+        border: none;
+    }
+
+    /* The container <div> - needed to position the dropdown content */
+    .dropdown {
+        position: absolute;
+        top: 15px;
+        left: 110px;
+        display: inline-block;
+        border-radius:8px;
+    }
+
+    /* Dropdown icon */
+    #drop-icon {
+
+        font-size:26px;
+    }
+
+    /* Dropdown Content (Hidden by Default) */
+    .dropdown-content {
+        display: none;
+        border-radius:8px;
+        position: absolute;
+        background-color: #f1f1f136;
+        min-width: 160px;
+        box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+        z-index: 1;
+        border-color: rgb(0, 0, 0);
+        border: none;
+    }
+
+    /* Links inside the dropdown */
+    .dropdown-content a {
+        color: black;
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
+        border-radius: 8px;
+    }
+
+    /* Change color of dropdown links on hover */
+    .dropdown-content a:hover {background-color: #ddd;}
+
+    /* Show the dropdown menu on hover */
+    .dropdown:hover .dropdown-content {display: block;}
+
+    /* Change the background color of the dropdown button when the dropdown content is shown */
+    .dropdown:hover .dropbtn {background-color: #525c5233;}
+
+    * {box-sizing:border-box}
+
+/* IP Button */
+
+.IPbutton {
+    height:30px;
+    width:150px;
+    position: absolute;
+    top: 10px;
+    right: 110px;
+    border-radius:8px;
+    font-size:20px;
+    font-family: 'Oswald', sans-serif;
+    height:51px;
+    cursor: pointer;
+    background-color:rgb(179, 191, 245);
+}
+
+#button {
+
+    font-family: 'tempest sans itc'
+}
+
+/*---Container Image For Backdrop + Text---*/
+
+/* Container holding the image and the text */
+.container {
+    position: relative;
+    text-align: center;
+}
+
+/* Off Centered title */
+    .off-centered {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size:70px;
+    font-family: 'tempest sans itc';
+    padding-top: 12%;
+    padding-right: 50%;
+    
+}
+
+    /* Off Centered subtitle */
+    .off-centered-subtitle {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 20px;
+    padding-right: 50%;
+    font-family: 'tempest sans itc';
+    padding-top: 25%;
+
+}
