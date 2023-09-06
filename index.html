@@ -11,73 +11,70 @@
 </head>
 <body>
 
-    <!-- Navigation Bar -->
+    <!-- NavBar -->
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <div class="container">
-            <a class="navbar-brand" href="#">Website</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ml-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">About</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Services</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Contact</a>
-                    </li>
-                </ul>
-            </div>
+        <a class="navbar-brand" href="#">ChillCraft</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Link</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Wiki
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="#">General</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="#">Minigames</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="#">OdysseySMP</a>
+                <a class="dropdown-item" href="#">Factions</a>
+                <a class="dropdown-item" href="#">Dungeons</a>
+              </div>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link disabled" href="#">Disabled</a>
+            </li>
+          </ul>
         </div>
     </nav>
 
-    <!-- Hero Section -->
-    <section class="hero bg-primary text-white text-center py-5">
-        <div class="container">
-            <h1 class="display-4">Welcome</h1>
-            <p class="lead">A place that is a place.</p>
-            <a href="#" class="btn btn-light btn-lg">Don't Learn More</a>
-        </div>
-    </section>
+    <!-- Background Image -->
+    <div class="bg-image"
+        style="background-image: url(https://i.imgur.com/S0meqtu.jpg);
+        height: 100vh">
+        <p class="align-middle">ChillCraft</p>
+    </div>
 
-    <!-- Features Section -->
-    <section class="py-5">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-4">
-                    <div class="card mb-4">
-                        <div class="card-body">
-                            <h3 class="card-title">Feature 1</h3>
-                            <p class="card-text">Hi</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="card mb-4">
-                        <div class="card-body">
-                            <h3 class="card-title">Feature 2</h3>
-                            <p class="card-text">Hello</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="card mb-4">
-                        <div class="card-body">
-                            <h3 class="card-title">Feature 3</h3>
-                            <p class="card-text">Heewo</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
+    <!-- Index Text Sections -->
+    <h1 class="font-weight-bold text-center">Updates</h1>
+
+    <div class="card w-25">
+        <img src="https://i.imgur.com/S0meqtu.jpg" class="card-img-top align-middle" alt="...">
+        <div class="card-body shadow p-3 mb-5 bg-body rounded align-middle opacity-50">
+          <h5 class="card-title">Card title</h5>
+          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+          <a href="#" class="btn btn-primary">Go somewhere</a>
         </div>
-    </section>
+    </div>
+
+    <h2 class="font-weight-bold text-center">Games</h2>
+
+    <h2 class="font-weight-bold text-center">Bedrock</h2>
+
+    <h2 class="font-weight-bold text-center">Extra Features</h2>
+
+    <h2 class="font-weight-bold text-center">Plugins</h2>
+
+    <h2 class="font-weight-bold text-center">Datapacks</h2>
 
     <!-- Footer Section -->
     <footer class="bg-dark text-white py-4">
