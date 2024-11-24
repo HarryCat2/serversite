@@ -3,198 +3,238 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Server Net</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css" integrity="sha384-r4NyP46KrjDleawBgD5tp8Y7UzmLA05oM1iAEQ17CSuDqnUK2+k9luXQOfXJCJ4I" crossorigin="anonymous">
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.min.js" integrity="sha384-oesi62hOLfzrys4LxRF63OJCXdXDipiYWBnvTl9Y9/TRlw5xlKIEHpNyvvDShgf/" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <title>Chrome Web Store - Extension Page</title>
+    <style>
+        /* General body styling */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+            color: #333;
+        }
+
+        /* Header */
+        .header {
+            background-color: #4285f4;
+            color: white;
+            display: flex;
+            align-items: center;
+            padding: 10px 20px;
+        }
+
+        .header img {
+            width: 32px;
+            margin-right: 10px;
+        }
+
+        .header h1 {
+            font-size: 1.5rem;
+            margin: 0;
+        }
+
+        /* Tabs */
+        .tabs {
+            background-color: white;
+            padding: 10px 20px;
+            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+            display: flex;
+            gap: 20px;
+        }
+
+        .tab {
+            color: #4285f4;
+            font-weight: bold;
+            text-decoration: none;
+            border-bottom: 3px solid transparent;
+            padding-bottom: 5px;
+            cursor: pointer;
+        }
+
+        .tab.active {
+            border-bottom: 3px solid #4285f4;
+        }
+
+        /* Main Content */
+        .main-content {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 20px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .extension-header {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .extension-header img {
+            width: 80px;
+            height: 80px;
+            border-radius: 8px;
+        }
+
+        .extension-header .details {
+            flex: 1;
+        }
+
+        .extension-header .details h2 {
+            margin: 0;
+            font-size: 1.8rem;
+            color: #333;
+        }
+
+        .extension-header .details p {
+            margin: 5px 0;
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        .extension-header .details .rating {
+            color: #fbbc05;
+            font-size: 1.2rem;
+        }
+
+        .action-button {
+            background-color: #4285f4;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+
+        .action-button:hover {
+            background-color: #357ae8;
+        }
+
+        /* Image gallery */
+        .image-gallery {
+            display: flex;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .image-gallery img {
+            width: 100%;
+            max-width: 300px;
+            border-radius: 8px;
+        }
+
+        /* Overview Section */
+        .overview {
+            margin-top: 30px;
+        }
+
+        .overview h3 {
+            font-size: 1.5rem;
+            color: #333;
+        }
+
+        .overview p {
+            font-size: 1rem;
+            color: #666;
+            line-height: 1.5;
+        }
+    </style>
 </head>
 <body>
-
- <!-- Main -->
- 
-    <!-- NavBar -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-white sticky-top">
-        <a class="navbar-brand" href="#">ChillCraft</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-      
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav mr-auto">
-            <li class="nav-item active">
-              <a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#BedRockAnchor">Bedrock Help</a>
-            </li>
-            <!-- Minecraft DropDown -->
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown-wiki" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <!-- DropDown Name -->
-                MC Wiki
-              </a>
-              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="#">General</a>
-                <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="#">Minigames</a>
-                <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="#">OdysseySMP</a>
-                <a class="dropdown-item" href="#">Factions</a>
-                <a class="dropdown-item" href="#">Dungeons</a>
-              </div>
-            </li>
-            <!-- Other Games DropDown -->
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown-games" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <!-- DropDown Name -->
-                Other Games
-              </a>
-              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="#">Sea Of Thieves</a>
-                <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="#">Rocket League</a>
-                <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="#">Party Animals</a>
-                <a class="dropdown-item" href="#">SSMU</a>
-                <a class="dropdown-item" href="#">Test</a>
-                </div>
-            </li>
-            
-          </ul>
-        </div>
-    </nav>
-
-    <!-- Background Image -->
-    <div class="bg-image"
-        style="min-height: 100vh; background-image: url(./images/main_page-comp.png); filter: blur(8px); -webkit-filter: blur(8px);">
-        <p class="align-middle ">ChillCraft</p>
-    </div>
-    <br>
-    <br>
-
-    <!-- Copy IP Button -->
-    
-
- <!-- Text Sections -->
-
-    <!-- Updates -->
-    
-    <h1 class="font-weight-bold text-center">Updates</h1>
-    <div class="album py-5 bg-light">
-        <div class="container justify-content-center align-middle">
-    
-            <div class="mx-0 p-2 justify-content-center row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-                <!-- 1st Card -->
-                <div class="col">
-                    <div class="card shadow-sm">
-                        <img src="images/tower_day-comp.png" class="card-img-top" alt="...">
-    
-                        <div class="card-body">
-                            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                        </div>
-                        
-                    </div>
-                </div><br><br>
-                <!-- 2nd Card -->
-                <div class="col">
-                    <div class="card shadow-sm">
-                        <img src="images/tower_day-comp.png" class="card-img-top" alt="...">
-    
-                        <div class="card-body">
-                            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                        </div>
-                    </div>
-                </div><br><br>
-                <!-- 3rd Card -->
-                <div class="col">
-                    <div class="card shadow-sm">
-                        <img src="images/tower_day-comp.png" class="card-img-top" alt="...">
-    
-                        <div class="card-body">
-                            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                        </div>
-                    </div>
-                </div>
-                <!--  -->
-                
-            </div>
-            </div>
+    <!-- Header -->
+    <div class="header">
+        <img src="https://www.google.com/images/branding/product/2x/chrome_64dp.png" alt="Chrome Logo">
+        <h1>Chrome Web Store</h1>
     </div>
 
-    <!-- Games + Spacer -->
-    <h2 class="font-weight-bold text-center">Games</h2>
-    <hr class="hr" />
-
-    <!-- BedRock + Spacer -->
-    <a id="BedRockAnchor"><h2 class="font-weight-bold text-center">Bedrock</h2></a>
-    <hr class="hr" />
-
-
-    <!-- Information for features that users can interact with in-game -->
-    <h2 class="font-weight-bold text-center">Plugin/Extra Features</h2>
-
-    <div class="album py-5 bg-light">
-        <div class="container">
-    
-            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-                <!-- 1st Card -->
-                <div class="col">
-                    <div class="card shadow-sm">
-                        <img src="https://i.imgur.com/cQ2pgbt.png" class="card-img-top" alt="...">
-    
-                                <div class="card-body">
-                            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to
-                                additional
-                                content. This content is a little bit longer.</p>
-                        </div>
-                    </div>
-                                </div>
-                <!-- 2nd Card -->
-                <div class="col">
-                    <div class="card shadow-sm">
-                        <img src="https://i.imgur.com/cQ2pgbt.png" class="card-img-top" alt="...">
-                
-                        <div class="card-body">
-                            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to
-                                additional
-                                content. This content is a little bit longer.</p>
-                        </div>
-                    </div>
-                </div>
-                <!-- 3rd Card -->
-                <div class="col">
-                    <div class="card shadow-sm">
-                        <img src="https://i.imgur.com/cQ2pgbt.png" class="card-img-top" alt="...">
-                
-                                <div class="card-body">
-                            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to
-                                additional
-                                content. This content is a little bit longer.</p>
-                        </div>
-                    </div>
-                </div>
-                <!--  -->
-            </div>
-        </div>
+    <!-- Tabs -->
+    <div class="tabs">
+        <a href="#" class="tab active">Extensions</a>
+        <a href="#" class="tab">Themes</a>
     </div>
 
-    <h2 class="font-weight-bold text-center">Datapacks</h2>
+    <!-- Main Content -->
+    <div class="main-content">
+        <div class="extension-header">
+            <img src="images/SherlockLogo.png" alt="Extension Icon">
+            <div class="details">
+                <h2>Sherlock - Verify Before You Share</h2>
+                <p>politics.sherlock.com | <span class="rating">★ 4.7</span> (2.6k ratings)</p>
+                <p>Verify political or factual content on social media platforms before reposting it.</p>
+            </div>
+            <button class="action-button" onclick="window.location.href='twitter_mock.html';">Add to Chrome</button>
 
-    <!-- Footer Section -->
-    <footer class="bg-dark text-white py-4">
-        <div class="container text-center">
-            <p>2023 ChillCraft</p>
-            <section class="mb-4 text-center">
-            <!-- Github Link Icon -->
-                <a class="btn btn-floating btn-lg m-2 text-white" href="https://github.com/HarryCat2" role="button" data-mdb-ripple-color="dark"><i class="fab fa-github"></i></a>
-            <!-- Skype Link Icon -->
-                <a class="btn btn-floating btn-lg m-2 text-white" href="https://join.skype.com/invite/OzKiEzgNdEv8" role="button" data-mdb-ripple-color="dark"><i class="fab fa-skype"></i></a>
-            <!-- Youtube Link Icon -->
-                <a class="btn btn-floating btn-lg m-2 text-white" href="https://www.youtube.com/@harry_cat6228/featured" role="button" data-mdb-ripple-color="dark"><i class="fab fa-youtube"></i></a>
-            </section>
         </div>
-    </footer>
 
+        <!-- Image Gallery -->
+        <div class="image-gallery">
+            <img src="images/screenshot1.png" alt="Screenshot 1">
+            <img src="images/screenshot2.png" alt="Screenshot 2">
+            <img src="images/sherlock.png" alt="Screenshot 3">
+        </div>
+
+        <!-- Overview Section -->
+        <section>
+            <h3>Overview</h3>
+            <p>
+                Sherlock is the ultimate tool for users seeking to ensure their shared content is accurate, responsible, and credible.
+                This lightweight extension integrates seamlessly with popular social media platforms like Twitter, Facebook, and Reddit.
+                Its algorithm scans posts for political and factual claims, cross-references them with verified databases, and issues a
+                warning if content contains possible misinformation.
+            </p>
+            <p>
+                Designed with user privacy in mind, Sherlock does not store any personal browsing data. It works entirely in your
+                browser, ensuring a secure and reliable fact-checking experience without compromising speed or performance.
+            </p>
+        </section>
+
+        <!-- Features Section -->
+        <section>
+            <h3>Features</h3>
+            <ul>
+                <li>Real-time content verification for political and factual claims.</li>
+                <li>Seamless integration with Twitter, Facebook, Reddit, and more.</li>
+                <li>Detailed explanations with sources for flagged content.</li>
+                <li>Lightweight design with no impact on browsing speed.</li>
+            </ul>
+        </section>
+
+        <!-- Privacy Practices -->
+        <section>
+            <h3>Privacy Practices</h3>
+            <p>
+                Sherlock prioritizes user privacy above all else. The extension processes all data locally in your browser and does
+                not send any information to external servers. Your browsing history, social media activity, and personal data are never
+                collected, stored, or shared.
+            </p>
+        </section>
+
+        <!-- FAQs -->
+        <section>
+            <h3>FAQs</h3>
+            <div class="faq">
+                <h4>How does Sherlock verify information?</h4>
+                <p>Sherlock uses a combination of AI-driven algorithms and trusted fact-checking databases to analyze claims.</p>
+
+                <h4>Does Sherlock work on all social media platforms?</h4>
+                <p>Currently, Sherlock supports Twitter, Facebook, and Reddit, with plans to expand to more platforms in future updates.</p>
+
+                <h4>Can I customize the alerts?</h4>
+                <p>Yes! Users can adjust alert sensitivity in the settings menu to match their preferences.</p>
+            </div>
+        </section>
+
+        <!-- Contact Information -->
+        <section>
+            <h3>Contact Information</h3>
+            <p>
+                Have questions or feedback? Reach out to us at <a href="mailto:support@politics.sherlock.com">support@politics.sherlock.com</a>.
+                ( NOTE: this is a fake email address for demonstration purposes only )
+                We’d love to hear from you!
+            </p>
+        </section>
+    </div>
 </body>
 </html>
