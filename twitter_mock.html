@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Twitter-like Social Media Page</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        /* Dark Mode Styling */
+        body {
+            background-color: #15202b;
+            color: #e1e8ed;
+            font-family: Arial, sans-serif;
+        }
+
+        .header {
+            width: 100%;
+            padding: 10px;
+            background-color: #1da1f2;
+            color: #fff;
+            font-size: 1.25em;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        .container {
+            display: flex;
+            justify-content: center;
+            max-width: 1200px;
+            margin-top: 20px;
+        }
+
+        .sidebar {
+            width: 20%;
+            color: #8899a6;
+            padding: 15px;
+            font-size: 0.9em;
+        }
+
+        .feed {
+            width: 50%;
+            padding: 15px;
+            background-color: #192734;
+            border-radius: 8px;
+        }
+
+        .post {
+            background-color: #253341;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            color: #e1e8ed;
+        }
+
+        .post-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .profile-img {
+            background-color: #8899a6;
+            border-radius: 50%;
+            width: 48px;
+            height: 48px;
+            margin-right: 10px;
+        }
+
+        .username {
+            font-weight: bold;
+            color: #e1e8ed;
+            font-size: 1em;
+        }
+
+        .verified-icon {
+            color: #1da1f2;
+            font-size: 0.9em;
+            margin-left: 5px;
+        }
+
+        .timestamp {
+            color: #8899a6;
+            font-size: 0.85em;
+            margin-left: 5px;
+        }
+
+        .post-footer {
+            display: flex;
+            justify-content: space-between;
+            color: #8899a6;
+            margin-top: 10px;
+            font-size: 1.2em;
+        }
+
+        .popup-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            backdrop-filter: blur(8px); /* Blurred background */
+            background: rgba(0, 0, 0, 0.7);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            visibility: hidden;
+            opacity: 0;
+            transition: opacity 0.3s, visibility 0.3s;
+            z-index: 1000;
+        }
+
+        .popup {
+            background: linear-gradient(to bottom right, #1da1f2, #192734); /* Gradient background */
+            padding: 20px;
+            max-width: 400px;
+            width: 90%;
+            border-radius: 16px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+            color: #e1e8ed;
+            text-align: left;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .popup h3 {
+            color: #fff;
+            margin-bottom: 10px;
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .popup p {
+            font-size: 1rem;
+            line-height: 1.5;
+            margin-bottom: 15px;
+        }
+
+        .source-link a {
+            color: #e1e8ed;
+            text-decoration: underline;
+            font-weight: bold;
+        }
+
+        .popup button {
+            background: #fff;
+            color: #1da1f2;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .popup button:disabled {
+            background: #8899a6;
+            color: #fff;
+            cursor: not-allowed;
+        }
+
+        .popup button:hover:not(:disabled) {
+            background: #1da1f2;
+            color: #fff;
+        }
+
+        /* Progress Bar */
+        .progress-bar {
+            width: 100%;
+            height: 6px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 4px;
+            margin-top: 10px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .progress-bar-inner {
+            height: 100%;
+            background: #fff;
+            width: 0%;
+            transition: width 0.2s linear;
+        }
+
+        .show {
+            visibility: visible;
+            opacity: 1;
+        }
+
+        .countdown {
+            font-size: 1.2rem;
+            color: #fff;
+            margin-top: 10px;
+        }
+
+        .reply {
+            margin-left: 20px;
+            background-color: #2a3a47;
+            padding: 10px;
+            border-radius: 8px;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <div class="header">
+        Y
+    </div>
+
+    <!-- Layout Container -->
+    <div class="container">
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <div class="sidebar-item">Home</div>
+            <div class="sidebar-item">Explore</div>
+            <div class="sidebar-item">Notifications</div>
+            <div class="sidebar-item">Messages</div>
+        </div>
+
+        <!-- Feed Section -->
+        <div class="feed" id="feed">
+            <!-- Post Information -->
+            <div class="post">
+                <div class="post-header">
+                    <div class="profile-img"></div>
+                    <span class="username">Admin</span>
+                    <span class="verified-icon">✔</span>
+                    <span class="timestamp">· 1h</span>
+                </div>
+                <strong>!!! Read Me !!!</strong>
+                <p></p>
+                <p>Hello!</p>
+                <p></p>
+                <p>These are real posts gathered from the internet, these are all false claims, and you are given real facts which have been manually prepared</p>
+                <p></p>
+                <strong>!!! You will not be able to interact with this post !!!</strong>
+                <p></p>
+                <p>please scroll down below to the next post to click share to see how this extention will work!</p>
+                <div>
+                    <img src="images/read-me.png">
+                </div>
+                <div class="post-footer">
+                    <span>❤️</span>
+                    <span>🔁</span>
+                    <span><button class="btn btn-link text-light">Share</button></span>
+                </div>
+            </div>
+            <!-- Post 1 -->
+            <div class="post" id="post1">
+                <div class="post-header">
+                    <div class="profile-img"></div>
+                    <span class="username">Mayor Eric Adams</span>
+                    <span class="verified-icon">✔</span>
+                    <span class="timestamp">· 2h</span>
+                </div>
+                <p>Earlier today, one of our officers was shot while protecting our subway system. I am relieved to report he is in good condition now, and we have arrested the suspect who put so many lives in danger. I cannot thank these officers enough for their bravery.</p>
+                <div class="post-footer">
+                    <span>❤️</span>
+                    <span>🔁</span>
+                    <span><button class="btn btn-link text-light" onclick="showPopup('popup1', 'post1')">Reply</button></span>
+                </div>
+            </div>
+            <!-- Post 2 -->
+            <div class="post" id="post2">
+                <div class="post-header">
+                    <div class="profile-img"></div>
+                    <span class="username">Biran Cates - Political Coiumnist &...</span>
+                    <span class="verified-icon">✔</span>
+                    <span class="timestamp">· 1h</span>
+                </div>
+                <p>I've been watching storm tracks since the 1980's</p>
+                <p></p>
+                <p># of times I've seen a Hurrican start there and move EASTWARD like this?</p>
+                <p></p>
+                <p>Zero.</p>
+                <div>
+                    <img src="images/post2attach.PNG">
+                </div>
+                <div class="post-footer">
+                    <span>❤️</span>
+                    <span>🔁</span>
+                    <span><button class="btn btn-link text-light" onclick="showPopup('popup2', 'post2')">Share</button></span>
+                </div>
+            </div>
+            <!-- Post 3 -->
+            <div class="post" id="post3">
+                <div class="post-header">
+                    <div class="profile-img"></div>
+                    <span class="username">Jory Micah #EndTheGeno...</span>
+                    <span class="verified-icon">✔</span>
+                    <span class="timestamp">· 1h</span>
+                </div>
+                <p>I don't believe the offical Holocost story anymore. I don't know what actually happened but I do know we have been lied to. If you can't criticize or even ask questions about a historical event without being labeled a "Nazi" & in some countries, arrested, something isn't right.</p>
+                <div class="post-footer">
+                    <span>❤️</span>
+                    <span>🔁</span>
+                    <span><button class="btn btn-link text-light" onclick="showPopup('popup3', 'post3')">Share</button></span>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Popups -->
+    <div id="popup1" class="popup-overlay">
+        <div class="popup">
+            <h3>Context for this post</h3>
+            <p><strong>Context:</strong> In this case, it is that the officer was shot by other officers, in pursuit of a man suspected of fair evasion for the amount of $2.90.</p>
+            <div class="source-link">
+                <p>Source: <a href="https://www.nytimes.com/2024/09/18/nyregion/nypd-shooting-brooklyn-subway.html" target="_blank">Police Officials Defend Subway Shooting That Gravely Wounded Bystander | nytimes.com</a></p>
+            </div>
+            <div class="progress-bar">
+                <div class="progress-bar-inner"></div>
+            </div>
+            <p class="countdown" id="countdown1">Time left: 5</p>
+            <button id="replyBtn1" onclick="handleReply('popup1', 'post1')" disabled>Reply</button>
+            <button id="shareButton1" onclick="handleShare('popup1', 'post1')" disabled>Share</button>
+            <button onclick="closePopup('popup1')">Close</button>
+        </div>
+    </div>
+    
+    <div id="popup2" class="popup-overlay">
+        <div class="popup">
+            <h3>Context for this post</h3>
+            <p><strong>Context:</strong> In this case, it is a political tweet thay heavily implies that the recent hurricanes were being used to alter the election outcome, but:</p>
+            <p></p>
+            <p>There have been 14 hurricanes to start in the gulf sonce 1851.</p>
+            <div class="source-link">
+                <p>Source: <a href="https://www.weather.gov/crp/tropical_cyclone_tracks" target="_blank">Western Gulf of Mexico Tropical Cyclones from 1851 to 2018 | weather.gov</a></p>
+            </div>
+            <div class="progress-bar">
+                <div class="progress-bar-inner"></div>
+            </div>
+            <p class="countdown" id="countdown2">Time left: 5</p>
+            <button id="replyBtn2" onclick="handleReply('popup2', 'post2')" disabled>Reply</button>
+            <button id="shareButton2" onclick="handleShare('popup2', 'post2')" disabled>Share</button>
+            <button onclick="closePopup('popup2')">Close</button>
+        </div>
+    </div>
+
+    <div id="popup3" class="popup-overlay">
+        <div class="popup">
+            <h3>Context for this post</h3>
+            <p><strong>Context:</strong> The holocaust is very well documented. Any questions about it have mountains of answers.</p>
+            <div class="source-link">
+                <p>Source: <a href="https://encyclopedia.ushmm.org/content/en/article/introduction-to-the-holocaust" target="_blank">Introduction to the Holocaust: What was the Holocaust? | encylopedia.org</a></p>
+            </div>
+            <div class="progress-bar">
+                <div class="progress-bar-inner"></div>
+            </div>
+            <p class="countdown" id="countdown3">Time left: 5</p>
+            <button id="replyBtn3" onclick="handleReply('popup3', 'post3')" disabled>Reply</button>
+            <button id="shareButton3" onclick="handleShare('popup3', 'post3')" disabled>Share</button>
+            <button onclick="closePopup('popup3')">Close</button>
+        </div>
+    </div>
+
+        </div>
+    </div>
+
+    <script>
+        let countdownTimer;
+        let timeLeft = 5; // Countdown time in seconds
+
+        function updateProgressBar(popupId) {
+            const progressBar = document.querySelector(`#${popupId} .progress-bar-inner`);
+            let progress = 100 - (timeLeft * 20); // Update progress
+
+            if (timeLeft <= 0) {
+                document.getElementById(`replyBtn${popupId.charAt(popupId.length - 1)}`).disabled = false; // Enable reply button
+            }
+
+            progressBar.style.width = progress + '%';
+            document.getElementById(`countdown${popupId.charAt(popupId.length - 1)}`).textContent = `Time left: ${timeLeft}`; // Update countdown display
+        }
+
+        function startTimer(popupId) {
+            countdownTimer = setInterval(function() {
+                timeLeft--;
+                updateProgressBar(popupId);
+                if (timeLeft <= 0) {
+                    clearInterval(countdownTimer);
+                }
+            }, 1000);
+        }
+
+        function showPopup(popupId, postId) {
+            document.getElementById(popupId).style.visibility = "visible";
+            document.getElementById(popupId).style.opacity = 1;
+            timeLeft = 5; // Reset timer when popup is opened
+            startTimer(popupId);
+
+             // Disable share button initially and enable after 5 seconds
+            const shareButton = document.getElementById('shareButton1');
+            shareButton.disabled = true;
+
+            const shareButton2 = document.getElementById('shareButton2');
+            shareButton2.disabled = true;
+
+            const shareButton3 = document.getElementById('shareButton3');
+            shareButton3.disabled = true;
+            
+            setTimeout(function() {
+                shareButton.disabled = false;
+                shareButton2.disabled = false;
+                shareButton3.disabled = false;
+            }, 5000);  // 5000 milliseconds = 5 seconds
+        }
+
+        function closePopup(popupId) {
+            document.getElementById(popupId).style.visibility = "hidden";
+            document.getElementById(popupId).style.opacity = 0;
+        }
+
+
+        function updatePostContent(postId) {
+            // Define HTML content for each post
+            const postContent = {
+                1: `<div class="post-content">
+                        <p>This is the content for Post 1. It's unique to post 1!</p>
+                    </div>`,
+                2: `<div class="post-content">
+                        <p>This is the content for Post 2. Different from post 1!</p>
+                    </div>`,
+                3: `<div class="post-content">
+                        <p>This is the content for Post 3. Custom content for post 3!</p>
+                    </div>`
+            };
+
+            if (postContent[postId]) {
+                document.getElementById(`post${postId}`).innerHTML = postContent[postId];
+            } else {
+                console.log("Invalid postId");
+            }
+        }
+
+        function handleReply(popupId, postId) {
+            const post = document.getElementById(postId);
+            const replyText = 
+            `This reply feature is under construction; this will have Context to the actual information generated by A.I. which will be generated from a whitelist of trusted sources we will handpick to ensure quality and factual information`;
+            
+            // Create a reply div
+            const replyDiv = document.createElement('div');
+            replyDiv.classList.add('reply');
+            replyDiv.textContent = replyText;
+            
+            // Append the reply under the post
+            post.appendChild(replyDiv);
+
+            // Disable the reply button after use
+            closePopup(popupId); // Close the popup after replying
+        }
+
+        function handleShare(popupId, postId) {
+            alert("You shared " + postId);
+            hidePopup(popupId);
+        }
+
+    </script>
+
+</body>
+</html>
