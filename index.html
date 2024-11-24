@@ -164,8 +164,7 @@
                 <p>politics.sherlock.com | <span class="rating">★ 4.7</span> (2.6k ratings)</p>
                 <p>Verify political or factual content on social media platforms before reposting it.</p>
             </div>
-            <button class="action-button" onclick="window.location.href='twitter_mock.html';">Add to Chrome</button>
-
+            <button class="action-button" onclick="addExtension()">Add to Chrome</button>
         </div>
 
         <!-- Image Gallery -->
@@ -236,5 +235,12 @@
             </p>
         </section>
     </div>
+    <script>
+        function addExtension() {
+            alert('Extension has been added to Chrome! Please Close this to move on!');
+            window.location.href = 'twitter_mock.html';
+        }
+    </script>
+
 </body>
 </html>
