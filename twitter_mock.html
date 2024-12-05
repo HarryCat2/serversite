@@ -5,8 +5,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Twitter-like Social Media Page</title>
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/d19fcab3a3.js" crossorigin="anonymous"></script>
+
     <style>
         /* Dark Mode Styling */
+
+        /* Styling the profile image */
+        .profile-img-2 {
+        width: 40px; /* Set the size of the profile image */
+        height: 40px;
+        border-radius: 50%; /* Make it circular */
+        background-image: url('images/f6mrr.jpg'); /* Path to the profile picture */
+        background-size: cover; /* Ensure the image covers the whole div */
+        background-position: center; /* Center the image */
+        border: 2px solid #ffffff00; /* Optional: add a border around the image */
+        }
+
         body {
             background-color: #15202b;
             color: #e1e8ed;
@@ -93,6 +107,23 @@
         }
 
         .popup-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            backdrop-filter: blur(8px); /* Blurred background */
+            background: rgba(0, 0, 0, 0.7);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            visibility: hidden;
+            opacity: 0;
+            transition: opacity 0.3s, visibility 0.3s;
+            z-index: 1000;
+        }
+
+        .popup-upvote {
             position: fixed;
             top: 0;
             left: 0;
@@ -200,6 +231,118 @@
             border-radius: 8px;
             margin-top: 10px;
         }
+        /* Styling the "S" with a dot around it */
+        .dot {
+        display: inline-block;
+        font-size: 3rem;
+        color: rgb(0, 0, 0); /* White text color */
+        font-weight: bold;
+        background-color: #1c692d; /* Light blue background */
+        border-radius: 50%;
+        width: 60px;
+        height: 60px;
+        line-height: 60px;
+        text-align: center;
+        position: relative;
+        transition: all 0.3s ease;
+        }
+
+        /* Fancy hover effect */
+        .dot:hover {
+        background-color: #1a8f16; /* Change to red when hovered */
+        transform: scale(1.1); /* Slightly increase the size */
+        box-shadow: 0px 8px 12px rgba(0, 0, 0, 0.2); /* Add shadow effect on hover */
+        }
+
+        /* Message that appears on hover */
+        .dot::after {
+        content: "Sherlock Is Installed!"; /* The message to appear */
+        position: absolute;
+        top: 15%; /* Center vertically relative to the dot */
+        left: 120%; /* Place it to the right of the dot */
+        transform: translateY(-100%); /* Vertically center the message */
+        background-color: #2c3e50; /* Same color as the footer background */
+        color: white;
+        padding: 5px 50px;
+        border-radius: 15px;
+        font-size: 1.5rem;
+        opacity: 0; /* Initially hidden */
+        visibility: hidden; /* Hidden by default */
+        transition: opacity 0.3s, visibility 0.3s; /* Smooth transition for visibility */
+        }
+
+        /* Make the message visible on hover */
+        .dot:hover::after {
+        opacity: 1; /* Make message visible */
+        visibility: visible; /* Make message visible */
+        }
+
+       
+        .footer {
+            position: fixed;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            background-color: rgba(255, 0, 0, 0);
+            color: rgb(255, 255, 255);
+            text-align: left;
+        }
+
+        /* General Fancy Box Styling */
+        .fancy-box-blue {
+        background-color: #1b640c; /* Dark background */
+        color: #ecf0f1; /* Light text color */
+        padding: 20px;
+        border-radius: 12px; /* Rounded corners */
+        box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.2); /* Shadow for depth */
+        width: 250px; /* Set a width */
+        text-align: center;
+        font-family: 'Arial', sans-serif;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        /* Fancy hover effect */
+        .fancy-box-blue:hover {
+        transform: scale(1.05); /* Slightly enlarge the box on hover */
+        box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.3); /* Darker shadow on hover */
+        }
+
+        /* Add some nice text styling */
+        .fancy-box-blue p {
+        font-size: 1.1rem; /* Slightly bigger text */
+        font-weight: bold;
+        margin: 0;
+        }
+
+
+        /* Pink Fancy Box */
+        .fancy-box-pink {
+            background-color: #a00000; /* Dark background */
+        color: #ecf0f1; /* Light text color */
+        padding: 20px;
+        border-radius: 12px; /* Rounded corners */
+        box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.2); /* Shadow for depth */
+        width: 250px; /* Set a width */
+        text-align: center;
+        font-family: 'Arial', sans-serif;
+        font-weight: bold;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .fancy-box-pink:hover {
+        transform: scale(1.05); /* Slightly enlarge the box on hover */
+        box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.3); /* Darker shadow on hover */
+        }
+
+        /* Add some nice text styling */
+        .fancy-box p {
+        font-size: 1.1rem; /* Slightly bigger text */
+        font-weight: bold;
+        margin: 0;
+        }
+
+
+</style>
     </style>
 </head>
 <body>
@@ -217,7 +360,14 @@
             <div class="sidebar-item">Explore</div>
             <div class="sidebar-item">Notifications</div>
             <div class="sidebar-item">Messages</div>
+
+            
         </div>
+
+        <!--Footer-->
+        <div class="footer">
+            <span class="dot">S</span>
+          </div>
 
         <!-- Feed Section -->
         <div class="feed" id="feed">
@@ -259,24 +409,22 @@
                 <div class="post-footer">
                     <span>❤️</span>
                     <span>🔁</span>
-                    <span><button class="btn btn-link text-light" onclick="showPopup('popup1', 'post1')">Share</button></span>
+                    <span><button class="btn btn-link text-light" onclick="showPopup('popup1', 'post1')">Reply</button></span>
                 </div>
             </div>
             <!-- Post 2 -->
             <div class="post" id="post2">
                 <div class="post-header">
-                    <div class="profile-img"></div>
-                    <span class="username">Biran Cates - Political Coiumnist &...</span>
+                    <div class="profile-img-2"></div>
+                    <span class="username">Layheehoo, Yoda</span>
                     <span class="verified-icon">✔</span>
                     <span class="timestamp">· 1h</span>
                 </div>
-                <p>I've been watching storm tracks since the 1980's</p>
+                <p>A Factual Post:</p>
                 <p></p>
-                <p># of times I've seen a Hurrican start there and move EASTWARD like this?</p>
-                <p></p>
-                <p>Zero.</p>
+                <p>A post that only has true facts, not based on theory or personal opinion</p>
                 <div>
-                    <img src="images/post2attach.PNG">
+                    <img src="images/2cp1p3.jpg">
                 </div>
                 <div class="post-footer">
                     <span>❤️</span>
@@ -306,18 +454,32 @@
     <!-- Popups -->
     <div id="popup1" class="popup-overlay">
         <div class="popup">
+            
             <h3>Context for this post</h3>
             <p><strong>Context:</strong> In this case, it is that the officer was shot by other officers, in pursuit of a man suspected of fair evasion for the amount of $2.90.</p>
             <div class="source-link">
-                <p>Source: <a href="https://www.nytimes.com/2024/09/18/nyregion/nypd-shooting-brooklyn-subway.html" target="_blank">Police Officials Defend Subway Shooting That Gravely Wounded Bystander | nytimes.com</a></p>
+                <p>Source One: <a href="https://www.nytimes.com/2024/09/18/nyregion/nypd-shooting-brooklyn-subway.html" target="_blank">nytimes.com</a></p>
+                <p>Source Two: <a href="google.com" target="_blank">could not find extra source</a></p>
+                <p>Source Three: <a href="google.com" target="_blank">could not find extra source</a></p>
+            </div>
+            <!-- Fancy Box with Pink Style -->
+            <div class="fancy-box-pink">
+                <p>This post is false!</p>
             </div>
             <div class="progress-bar">
                 <div class="progress-bar-inner"></div>
             </div>
+            
             <p class="countdown" id="countdown1">Time left: 5</p>
             <button id="replyBtn1" onclick="handleReply('popup1', 'post1')" disabled>Reply</button>
             <button id="shareButton1" onclick="handleShare('popup1', 'post1')" disabled>Share</button>
             <button onclick="closePopup('popup1')">Close</button>
+        </div>
+        <div> 
+            
+            <p>‎ ‎ ‎ ‎ <i class="fa-solid fa-thumbs-up" style="color: #ffffff;"></i> ‎ Upvote</p>
+            <p> </p>
+            <p>‎ ‎ ‎ ‎ <i class="fa-solid fa-thumbs-down" style="color: #ffffff;"></i> ‎ Downvote</p>
         </div>
     </div>
     
@@ -330,6 +492,11 @@
             <div class="source-link">
                 <p>Source: <a href="https://www.weather.gov/crp/tropical_cyclone_tracks" target="_blank">Western Gulf of Mexico Tropical Cyclones from 1851 to 2018 | weather.gov</a></p>
             </div>
+            <div class="fancy-box-blue">
+                <p>This Post is correct!</p>
+                <p> </p>
+                <p>Sidenote: this entire popup won't be here in the real product because its true!</p>
+            </div>
             <div class="progress-bar">
                 <div class="progress-bar-inner"></div>
             </div>
@@ -338,14 +505,25 @@
             <button id="shareButton2" onclick="handleShare('popup2', 'post2')" disabled>Share</button>
             <button onclick="closePopup('popup2')">Close</button>
         </div>
+        <div> 
+            
+            <p>‎ ‎ ‎ ‎ <i class="fa-solid fa-thumbs-up" style="color: #ffffff;"></i> ‎ 29k Upvotes</p>
+            <p> </p>
+            <p>‎ ‎ ‎ ‎ <i class="fa-solid fa-thumbs-down" style="color: #ffffff;"></i> ‎ 1k Downvotes</p>
+        </div>
     </div>
 
     <div id="popup3" class="popup-overlay">
         <div class="popup">
             <h3>Context for this post</h3>
-            <p><strong>Context:</strong> The holocaust is very well documented. Any questions about it have mountains of answers.</p>
+            <p><strong>Context:</strong> The holocaust is only SEMI well documented!</p>
             <div class="source-link">
                 <p>Source: <a href="https://encyclopedia.ushmm.org/content/en/article/introduction-to-the-holocaust" target="_blank">Introduction to the Holocaust: What was the Holocaust? | encylopedia.org</a></p>
+            </div>
+            <!-- Fancy Box with Pink Style -->
+            <div class="fancy-box-pink">
+                <p>Some users think the AI generated context is wrong!</p>
+                <p>please do your own research to tackle this one!</p>
             </div>
             <div class="progress-bar">
                 <div class="progress-bar-inner"></div>
@@ -354,6 +532,12 @@
             <button id="replyBtn3" onclick="handleReply('popup3', 'post3')" disabled>Reply</button>
             <button id="shareButton3" onclick="handleShare('popup3', 'post3')" disabled>Share</button>
             <button onclick="closePopup('popup3')">Close</button>
+        </div>
+        <div> 
+            
+            <p>‎ ‎ ‎ ‎ <i class="fa-solid fa-thumbs-up" style="color: #ffffff;"></i> ‎ 3k Upvotes</p>
+            <p> </p>
+            <p>‎ ‎ ‎ ‎ <i class="fa-solid fa-thumbs-down" style="color: #ffffff;"></i> ‎ 21k Downvotes</p>
         </div>
     </div>
 
