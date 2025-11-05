@@ -16,15 +16,14 @@
     }
 
     .iphone {
-      width: 375px; /* iPhone 12 width */
-      height: 812px; /* iPhone 12 height */
+      width: 375px;
+      height: 812px;
       background-color: #000;
       border-radius: 40px;
       padding: 16px;
       box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
       position: relative;
       display: flex;
-      flex-direction: column;
       justify-content: center;
       align-items: center;
     }
@@ -35,12 +34,18 @@
       height: 100%;
       border-radius: 28px;
       overflow: hidden;
-      display: flex;
+      position: relative;
+      display: none; /* hidden by default */
+      flex-direction: column;
       justify-content: center;
       align-items: center;
+      text-align: center;
     }
 
-    /* Optional: notch for realism */
+    .screen.active {
+      display: flex; /* only active screen shows */
+    }
+
     .notch {
       position: absolute;
       top: 10px;
@@ -52,14 +57,60 @@
       border-bottom-left-radius: 20px;
       border-bottom-right-radius: 20px;
     }
+
+    button {
+      background-color: #007aff;
+      border: none;
+      border-radius: 12px;
+      color: white;
+      padding: 10px 20px;
+      font-size: 16px;
+      margin-top: 20px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #005ecc;
+    }
   </style>
 </head>
 <body>
   <div class="iphone">
     <div class="notch"></div>
-    <div class="screen">
-      <h2>Your App UI Here</h2>
+
+    <!-- Home Screen -->
+    <div class="screen active" id="home">
+      <h2>Home Screen</h2>
+      <button onclick="showScreen('settings')">Go to Settings</button>
+    </div>
+
+    <!-- Settings Screen -->
+    <div class="screen" id="settings">
+      <h2>Settings</h2>
+      <button onclick="showScreen('home')">Back to Home</button>
+    </div>
+
+    <!-- Profile Screen -->
+    <div class="screen" id="profile">
+      <h2>Profile</h2>
+      <button onclick="showScreen('home')">Back to Home</button>
     </div>
   </div>
+
+  <script>
+    // Track the currently visible screen
+    let currentScreen = 'home';
+
+    function showScreen(screenId) {
+      // Hide the current screen
+      document.getElementById(currentScreen).classList.remove('active');
+
+      // Show the new one
+      document.getElementById(screenId).classList.add('active');
+
+      // Update the tracker
+      currentScreen = screenId;
+    }
+  </script>
 </body>
 </html>
