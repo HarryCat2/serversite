@@ -1,246 +1,65 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chrome Web Store - Extension Page</title>
-    <style>
-        /* General body styling */
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f9f9f9;
-            color: #333;
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mock iPhone App</title>
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: #eaeaea;
+      font-family: sans-serif;
+    }
 
-        /* Header */
-        .header {
-            background-color: #4285f4;
-            color: white;
-            display: flex;
-            align-items: center;
-            padding: 10px 20px;
-        }
+    .iphone {
+      width: 375px; /* iPhone 12 width */
+      height: 812px; /* iPhone 12 height */
+      background-color: #000;
+      border-radius: 40px;
+      padding: 16px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
 
-        .header img {
-            width: 32px;
-            margin-right: 10px;
-        }
+    .screen {
+      background-color: #fff;
+      width: 100%;
+      height: 100%;
+      border-radius: 28px;
+      overflow: hidden;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
 
-        .header h1 {
-            font-size: 1.5rem;
-            margin: 0;
-        }
-
-        /* Tabs */
-        .tabs {
-            background-color: white;
-            padding: 10px 20px;
-            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
-            display: flex;
-            gap: 20px;
-        }
-
-        .tab {
-            color: #4285f4;
-            font-weight: bold;
-            text-decoration: none;
-            border-bottom: 3px solid transparent;
-            padding-bottom: 5px;
-            cursor: pointer;
-        }
-
-        .tab.active {
-            border-bottom: 3px solid #4285f4;
-        }
-
-        /* Main Content */
-        .main-content {
-            max-width: 1200px;
-            margin: 20px auto;
-            padding: 20px;
-            background: white;
-            border-radius: 8px;
-            box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.1);
-        }
-
-        .extension-header {
-            display: flex;
-            align-items: center;
-            gap: 20px;
-        }
-
-        .extension-header img {
-            width: 80px;
-            height: 80px;
-            border-radius: 8px;
-        }
-
-        .extension-header .details {
-            flex: 1;
-        }
-
-        .extension-header .details h2 {
-            margin: 0;
-            font-size: 1.8rem;
-            color: #333;
-        }
-
-        .extension-header .details p {
-            margin: 5px 0;
-            color: #666;
-            font-size: 0.9rem;
-        }
-
-        .extension-header .details .rating {
-            color: #fbbc05;
-            font-size: 1.2rem;
-        }
-
-        .action-button {
-            background-color: #4285f4;
-            color: white;
-            padding: 10px 20px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 1rem;
-        }
-
-        .action-button:hover {
-            background-color: #357ae8;
-        }
-
-        /* Image gallery */
-        .image-gallery {
-            display: flex;
-            gap: 10px;
-            margin-top: 20px;
-        }
-
-        .image-gallery img {
-            width: 100%;
-            max-width: 300px;
-            border-radius: 8px;
-        }
-
-        /* Overview Section */
-        .overview {
-            margin-top: 30px;
-        }
-
-        .overview h3 {
-            font-size: 1.5rem;
-            color: #333;
-        }
-
-        .overview p {
-            font-size: 1rem;
-            color: #666;
-            line-height: 1.5;
-        }
-    </style>
+    /* Optional: notch for realism */
+    .notch {
+      position: absolute;
+      top: 10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 120px;
+      height: 30px;
+      background-color: #000;
+      border-bottom-left-radius: 20px;
+      border-bottom-right-radius: 20px;
+    }
+  </style>
 </head>
 <body>
-    <!-- Header -->
-    <div class="header">
-        <img src="https://www.google.com/images/branding/product/2x/chrome_64dp.png" alt="Chrome Logo">
-        <h1>Chrome Web Store</h1>
+  <div class="iphone">
+    <div class="notch"></div>
+    <div class="screen">
+      <h2>Your App UI Here</h2>
     </div>
-
-    <!-- Tabs -->
-    <div class="tabs">
-        <a href="#" class="tab active">Extensions</a>
-        <a href="#" class="tab">Themes</a>
-    </div>
-
-    <!-- Main Content -->
-    <div class="main-content">
-        <div class="extension-header">
-            <img src="images/SherlockLogo.png" alt="Extension Icon">
-            <div class="details">
-                <h2>Sherlock - Verify Before You Share</h2>
-                <p>politics.sherlock.com | <span class="rating">★ 6.9</span> (420k ratings)</p>
-                <p>Verify political or factual content on social media platforms before reposting it.</p>
-            </div>
-            <button class="action-button" onclick="addExtension()">Add to Chrome</button>
-        </div>
-
-        <!-- Image Gallery -->
-        <div class="image-gallery">
-            <img src="images/screenshot1.png" alt="Screenshot 1">
-            <img src="images/screenshot2.png" alt="Screenshot 2">
-            <img src="images/sherlock.png" alt="Screenshot 3">
-        </div>
-
-        <!-- Overview Section -->
-        <section>
-            <h3>Overview</h3>
-            <p>
-                Sherlock is the ultimate tool for users seeking to ensure their shared content is accurate, responsible, and credible.
-                This lightweight extension integrates seamlessly with popular social media platforms like Twitter, Facebook, and Reddit.
-                Its algorithm scans posts for political and factual claims, cross-references them with verified databases, and issues a
-                warning if content contains possible misinformation.
-            </p>
-            <p>
-                Designed with user privacy in mind, Sherlock does not store any personal browsing data. It works entirely in your
-                browser, ensuring a secure and reliable fact-checking experience without compromising speed or performance.
-            </p>
-        </section>
-
-        <!-- Features Section -->
-        <section>
-            <h3>Features</h3>
-            <ul>
-                <li>Real-time content verification for political and factual claims.</li>
-                <li>Seamless integration with Twitter, Facebook, Reddit, and more.</li>
-                <li>Detailed explanations with sources for flagged content.</li>
-                <li>Lightweight design with no impact on browsing speed.</li>
-            </ul>
-        </section>
-
-        <!-- Privacy Practices -->
-        <section>
-            <h3>Privacy Practices</h3>
-            <p>
-                Sherlock prioritizes user privacy above all else. The extension processes all data locally in your browser and does
-                not send any information to external servers. Your browsing history, social media activity, and personal data are never
-                collected, stored, or shared.
-            </p>
-        </section>
-
-        <!-- FAQs -->
-        <section>
-            <h3>FAQs</h3>
-            <div class="faq">
-                <h4>How does Sherlock verify information?</h4>
-                <p>Sherlock uses a combination of AI-driven algorithms and trusted fact-checking databases to analyze claims.</p>
-
-                <h4>Does Sherlock work on all social media platforms?</h4>
-                <p>Currently, Sherlock supports Twitter, Facebook, and Reddit, with plans to expand to more platforms in future updates.</p>
-
-                <h4>Can I customize the alerts?</h4>
-                <p>Yes! Users can adjust alert sensitivity in the settings menu to match their preferences.</p>
-            </div>
-        </section>
-
-        <!-- Contact Information -->
-        <section>
-            <h3>Contact Information</h3>
-            <p>
-                Have questions or feedback? Reach out to us at <a href="mailto:support@politics.sherlock.com">support@politics.sherlock.com</a>.
-                ( NOTE: this is a fake email address for demonstration purposes only )
-                We’d love to hear from you!
-            </p>
-        </section>
-    </div>
-    <script>
-        function addExtension() {
-            alert('Extension has been added to Chrome! Please click "Ok" to move on!');
-            window.location.href = 'twitter_mock.html';
-        }
-    </script>
-
+  </div>
 </body>
 </html>
