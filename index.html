@@ -12,6 +12,8 @@
       filter: blur(1px);
 
     }
+
+
     
     
     body {
@@ -167,7 +169,7 @@
         .username {
             font-weight: bold;
             color: #e1e8ed;
-            font-size: 1em;
+            font-size: 0.8em;
         }
 
         .verified-icon {
@@ -186,7 +188,7 @@
             display: flex;
             justify-content: space-between;
             color: #8899a6;
-            margin-top: 5px;
+            
             font-size: 1.2em;
         }
         
@@ -212,10 +214,10 @@
           <img class="home-header" src="images/Mall-Quest-11-7-2025.png">
           <img id="background-image-mallquest" src="images/proxy-image">
           <div class="home-buttons">
-            <button onclick="showScreen('photo_feed')">Go to Photo Feed</button>
-            <button onclick="showScreen('music_zone')">Go to Music Feed</button>
-            <button onclick="showScreen('ar_quests')">Go to AR Quests</button>
-            <button onclick="showScreen('settings')">Go to Settings</button>
+            <button onclick="showScreen('photo_feed')">Photo Feed</button>
+            <button onclick="showScreen('music_zone')">Music Feed</button>
+            <button onclick="showScreen('ar_quests')">AR Quests</button>
+            <button onclick="showScreen('settings')">Settings</button>
           </div>
         </div>
 
@@ -224,8 +226,8 @@
           
           <h2>Settings</h2>
           <div class="home-buttons">
-            <button onclick="showScreen('profile')">Go to Profile</button>
-            <button onclick="showScreen('home')">Back to Home</button>
+            <button onclick="showScreen('profile')">Profile</button>
+            <button onclick="showScreen('home')">Home</button>
           </div>
         </div>
 
@@ -233,7 +235,7 @@
         <div class="screen" id="profile">
           <h2>Profile</h2>
           <img id="profile-avatar" src="images/vecteezy_a-silhouette-of-a-man-walking-in-the-dark_49657514.png">
-          <button class="home-buttons" id="profile-back-to-home-button" onclick="showScreen('home')">Back to Home</button>
+          <button class="home-buttons" id="profile-back-to-home-button" onclick="showScreen('home')">Home</button>
         </div>
 
       <div class="screen" id="ar_quests">
@@ -250,9 +252,7 @@
       </div>
 
       <div class="screen" id="photo_feed">
-          
-          <h2>Photo Feed</h2>
-          <button onclick="showScreen('home')">Back to Home</button>
+
           <!-- Feed Section -->
         <div class="feed" id="feed">
             <!-- Post Information -->
@@ -267,11 +267,9 @@
                 <p></p>
                 <p>Hello!</p>
                 <p></p>
-                <p>These are real posts gathered from the internet, these are all false claims, and you are given real facts which have been manually prepared</p>
+                <p>These are real memes gathered from the internet which have been manually prepared</p>
                 <p></p>
-                <strong>!!! You will not be able to interact with this post !!!</strong>
-                <p></p>
-                <p>please scroll down below to the next post to click share to see how this extention will work!</p>
+                <p>please scroll down below</p>
                 <div>
                     <img class="twitter-image" src="images/read-me.png">
                 </div>
@@ -285,11 +283,14 @@
             <div class="post" id="post1">
                 <div class="post-header">
                     <div class="profile-img"></div>
-                    <span class="username">Mayor Eric Adams</span>
+                    <span class="username">Tommy 'Escalator King' Jenkins</span>
                     <span class="verified-icon">✔</span>
                     <span class="timestamp">· 2h</span>
                 </div>
-                <p>Earlier today, one of our officers was shot while protecting our subway system. I am relieved to report he is in good condition now, and we have arrested the suspect who put so many lives in danger. I cannot thank these officers enough for their bravery.</p>
+                <p>How's Tacoma doing today! can't wait to get some spaghetti tacos at the DMV.</p>
+                <div>
+                    <img class="twitter-image" src="images/memes1">
+                </div>
                 <div class="post-footer">
                     <span>❤️</span>
                     <span>🔁</span>
@@ -300,15 +301,13 @@
             <div class="post" id="post2">
                 <div class="post-header">
                     <div class="profile-img-2"></div>
-                    <span class="username">Layheehoo, Yoda</span>
+                    <span class="username">Jory</span>
                     <span class="verified-icon">✔</span>
                     <span class="timestamp">· 1h</span>
                 </div>
-                <p>A Factual Post:</p>
-                <p></p>
-                <p>A post that only has true facts, not based on theory or personal opinion</p>
+                <p>Me when Sir Barksalot “Quantum Milkshake” Johnson teaches pigeons to skateboard at the Mall Fountain </p>
                 <div>
-                    <img class="twitter-image" src="images/2cp1p3.jpg">
+                    <img class="twitter-image" src="images/shockled">
                 </div>
                 <div class="post-footer">
                     <span>❤️</span>
@@ -320,11 +319,11 @@
             <div class="post" id="post3">
                 <div class="post-header">
                     <div class="profile-img"></div>
-                    <span class="username">Jory</span>
+                    <span class="username">Sally “Quantum Socks” Williams</span>
                     <span class="verified-icon">✔</span>
                     <span class="timestamp">· 1h</span>
                 </div>
-                <p>I don't believe the offical Holocost story anymore. I don't know what actually happened but I do know we have been lied to. If you can't criticize or even ask questions about a historical event without being labeled a "Nazi" & in some countries, arrested, something isn't right.</p>
+                <p>How are you all doing! Can't wait to get to the Tacoma Mall to train raccoons to do taxes at the Parking Garage</p>
                 <div class="post-footer">
                     <span>❤️</span>
                     <span>🔁</span>
@@ -333,6 +332,8 @@
             </div>
 
         </div>
+        
+        <button class="home-buttons" onclick="showScreen('home')">Back to Home</button>
       </div>
     </div>
   </div>
