@@ -4,21 +4,40 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Mock iPhone App</title>
-  <style>
+  <style> 
+    
+    #background-image-mallquest{
+      height: 100%;
+      width: 100%;
+      filter: blur(1px);
+
+    }
+    
+    
     body {
       margin: 0;
       height: 100vh;
       display: flex;
       justify-content: center;
       align-items: center;
-      background-color: #eaeaea;
+      background-image: linear-gradient(to bottom right, rgb(73, 73, 73), rgb(44, 44, 44));
       font-family: sans-serif;
+    }
+
+    .iphone-frame {
+      padding: 9px; /* border thickness */
+      border-radius: 50px; /* slightly larger than .iphone’s 40px */
+      background: linear-gradient(145deg, #a1a1a1, #5c5c5c); /* metallic look */
+      box-shadow: 0 0 25px rgba(0, 0, 0, 0.5);
+      display: flex;
+      justify-content: center;
+      align-items: center;
     }
 
     .iphone {
       width: 375px;
       height: 812px;
-      background-color: #000;
+      background-color: #000000;
       border-radius: 40px;
       padding: 16px;
       box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
@@ -28,7 +47,17 @@
       align-items: center;
     }
 
+    video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 28px;
+    }
+    
+
     .screen {
+      opacity: 0;
+      transition: opacity 0.4s ease;
       background-color: #fff;
       width: 100%;
       height: 100%;
@@ -40,10 +69,13 @@
       justify-content: center;
       align-items: center;
       text-align: center;
+      pointer-events: none; /* prevents clicking hidden screens */
     }
 
     .screen.active {
       display: flex; /* only active screen shows */
+      opacity: 1;
+      pointer-events: auto;
     }
 
     .notch {
@@ -56,10 +88,12 @@
       background-color: #000;
       border-bottom-left-radius: 20px;
       border-bottom-right-radius: 20px;
+      z-index: 10; /* keep it above screens */
     }
 
+
     button {
-      background-color: #007aff;
+      background-color: #3700ff;
       border: none;
       border-radius: 12px;
       color: white;
@@ -67,34 +101,239 @@
       font-size: 16px;
       margin-top: 20px;
       cursor: pointer;
+      font-weight: bold;
     }
 
     button:hover {
       background-color: #005ecc;
     }
+
+    .home-buttons {
+      position: absolute;
+      bottom: 40px;   /* distance from bottom edge */
+      left: 30px;     /* distance from left edge */
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    .home-header {
+      margin-top: -610px;
+      position: absolute;
+      max-width: 400px;
+      height: auto;
+      z-index: 10;
+      }
+
+    #profile-avatar {
+          width: 300px;
+          height: 300px;
+        }
+
+
+
+    /*Twitter Mockup Post*/
+    .feed {
+            width: 95%;
+            padding: 10px;
+            background-color: #192734;
+            border-radius: 8px;
+            overflow-y: auto; 
+            
+        }
+
+        .post {
+            background-color: #253341;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            color: #e1e8ed;
+        }
+
+        .post-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .profile-img {
+            background-color: #8899a6;
+            border-radius: 50%;
+            width: 48px;
+            height: 48px;
+            margin-right: 10px;
+        }
+
+        .username {
+            font-weight: bold;
+            color: #e1e8ed;
+            font-size: 1em;
+        }
+
+        .verified-icon {
+            color: #1da1f2;
+            font-size: 0.9em;
+            margin-left: 5px;
+        }
+
+        .timestamp {
+            color: #8899a6;
+            font-size: 0.85em;
+            margin-left: 5px;
+        }
+
+        .post-footer {
+            display: flex;
+            justify-content: space-between;
+            color: #8899a6;
+            margin-top: 5px;
+            font-size: 1.2em;
+        }
+        
+        .twitter-image {
+          width: 300px;
+          height: 300px;
+          object-fit: cover; /* crops image to fill box neatly */
+          border-radius: 3px; /* optional for rounded corners */
+        }
+
+        
+
+
   </style>
 </head>
 <body>
-  <div class="iphone">
-    <div class="notch"></div>
+  <div class="iphone-frame">
+    <div class="iphone">
+      <div class="notch"></div>
 
-    <!-- Home Screen -->
-    <div class="screen active" id="home">
-      <h2>Home Screen</h2>
-      <button onclick="showScreen('settings')">Go to Settings</button>
-    </div>
+        <!-- Home Screen -->
+        <div class="screen active" id="home">
+          <img class="home-header" src="images/Mall-Quest-11-7-2025.png">
+          <img id="background-image-mallquest" src="images/proxy-image">
+          <div class="home-buttons">
+            <button onclick="showScreen('photo_feed')">Go to Photo Feed</button>
+            <button onclick="showScreen('music_zone')">Go to Music Feed</button>
+            <button onclick="showScreen('ar_quests')">Go to AR Quests</button>
+            <button onclick="showScreen('settings')">Go to Settings</button>
+          </div>
+        </div>
 
-    <!-- Settings Screen -->
-    <div class="screen" id="settings">
-      <h2>Settings</h2>
-      <button onclick="showScreen('home')">Back to Home</button>
-      <button onclick="showScreen('profile')">Go to Profile</button>
-    </div>
+        <!-- Settings Screen -->
+        <div class="screen" id="settings">
+          
+          <h2>Settings</h2>
+          <div class="home-buttons">
+            <button onclick="showScreen('profile')">Go to Profile</button>
+            <button onclick="showScreen('home')">Back to Home</button>
+          </div>
+        </div>
 
-    <!-- Profile Screen -->
-    <div class="screen" id="profile">
-      <h2>Profile</h2>
-      <button onclick="showScreen('home')">Back to Home</button>
+        <!-- Profile Screen -->
+        <div class="screen" id="profile">
+          <h2>Profile</h2>
+          <img id="profile-avatar" src="images/vecteezy_a-silhouette-of-a-man-walking-in-the-dark_49657514.png">
+          <button class="home-buttons" id="profile-back-to-home-button" onclick="showScreen('home')">Back to Home</button>
+        </div>
+
+      <div class="screen" id="ar_quests">
+            <h2>AR Quests and Challenges</h2>
+            <video id="cameraFeed" autoplay="" playsinline=""></video>
+            <button onclick="stopCamera()">Stop Camera</button>
+            <button onclick="showScreen('home'); stopCamera();">Back to Home</button>
+      </div>
+
+      <div class="screen" id="music_zone">
+          
+          <h2>Music Zone</h2>
+          <button onclick="showScreen('home')">Back to Home</button>
+      </div>
+
+      <div class="screen" id="photo_feed">
+          
+          <h2>Photo Feed</h2>
+          <button onclick="showScreen('home')">Back to Home</button>
+          <!-- Feed Section -->
+        <div class="feed" id="feed">
+            <!-- Post Information -->
+            <div class="post">
+                <div class="post-header">
+                    <div class="profile-img"></div>
+                    <span class="username">Admin</span>
+                    <span class="verified-icon">✔</span>
+                    <span class="timestamp">· 1h</span>
+                </div>
+                <strong>!!! Read Me !!!</strong>
+                <p></p>
+                <p>Hello!</p>
+                <p></p>
+                <p>These are real posts gathered from the internet, these are all false claims, and you are given real facts which have been manually prepared</p>
+                <p></p>
+                <strong>!!! You will not be able to interact with this post !!!</strong>
+                <p></p>
+                <p>please scroll down below to the next post to click share to see how this extention will work!</p>
+                <div>
+                    <img class="twitter-image" src="images/read-me.png">
+                </div>
+                <div class="post-footer">
+                    <span>❤️</span>
+                    <span>🔁</span>
+                    <span><button class="btn btn-link text-light">Share</button></span>
+                </div>
+            </div>
+            <!-- Post 1 -->
+            <div class="post" id="post1">
+                <div class="post-header">
+                    <div class="profile-img"></div>
+                    <span class="username">Mayor Eric Adams</span>
+                    <span class="verified-icon">✔</span>
+                    <span class="timestamp">· 2h</span>
+                </div>
+                <p>Earlier today, one of our officers was shot while protecting our subway system. I am relieved to report he is in good condition now, and we have arrested the suspect who put so many lives in danger. I cannot thank these officers enough for their bravery.</p>
+                <div class="post-footer">
+                    <span>❤️</span>
+                    <span>🔁</span>
+                    <span><button class="btn btn-link text-light" onclick="showPopup('popup1', 'post1')">Reply</button></span>
+                </div>
+            </div>
+            <!-- Post 2 -->
+            <div class="post" id="post2">
+                <div class="post-header">
+                    <div class="profile-img-2"></div>
+                    <span class="username">Layheehoo, Yoda</span>
+                    <span class="verified-icon">✔</span>
+                    <span class="timestamp">· 1h</span>
+                </div>
+                <p>A Factual Post:</p>
+                <p></p>
+                <p>A post that only has true facts, not based on theory or personal opinion</p>
+                <div>
+                    <img class="twitter-image" src="images/2cp1p3.jpg">
+                </div>
+                <div class="post-footer">
+                    <span>❤️</span>
+                    <span>🔁</span>
+                    <span><button class="btn btn-link text-light" onclick="showPopup('popup2', 'post2')">Share</button></span>
+                </div>
+            </div>
+            <!-- Post 3 -->
+            <div class="post" id="post3">
+                <div class="post-header">
+                    <div class="profile-img"></div>
+                    <span class="username">Jory</span>
+                    <span class="verified-icon">✔</span>
+                    <span class="timestamp">· 1h</span>
+                </div>
+                <p>I don't believe the offical Holocost story anymore. I don't know what actually happened but I do know we have been lied to. If you can't criticize or even ask questions about a historical event without being labeled a "Nazi" & in some countries, arrested, something isn't right.</p>
+                <div class="post-footer">
+                    <span>❤️</span>
+                    <span>🔁</span>
+                    <span><button class="btn btn-link text-light" onclick="showPopup('popup3', 'post3')">Share</button></span>
+                </div>
+            </div>
+
+        </div>
+      </div>
     </div>
   </div>
 
@@ -103,15 +342,55 @@
     let currentScreen = 'home';
 
     function showScreen(screenId) {
-      // Hide the current screen
-      document.getElementById(currentScreen).classList.remove('active');
+    if (screenId === currentScreen) return;
 
-      // Show the new one
-      document.getElementById(screenId).classList.add('active');
+    const current = document.getElementById(currentScreen);
+    const next = document.getElementById(screenId);
 
-      // Update the tracker
+    // Fade out current screen
+    current.classList.remove('active');
+
+    // Wait for fade-out to finish before showing the new one
+    setTimeout(() => {
+      next.classList.add('active');
       currentScreen = screenId;
+       if (screenId === 'ar_quests') {
+      startCamera();
+      }
+
+      // If leaving camera screen, stop it
+      if (current.id === 'ar_quests') {
+        stopCamera();
+      }
+      
+    }, ); // matches CSS transition time (0.4s)
+
+    // CAMERA STUFF
+  
     }
-  </script>
+    let stream = null;
+  
+  async function startCamera() {
+    const video = document.getElementById('cameraFeed');
+    try {
+      // use back camera on mobile if available
+      stream = await navigator.mediaDevices.getUserMedia({
+        video: { facingMode: "environment" }
+      });
+      video.srcObject = stream;
+    } catch (err) {
+      console.error("Camera error:", err);
+      alert("Unable to access camera. Check permissions.");
+    }
+  }
+
+  function stopCamera() {
+    if (stream) {
+      stream.getTracks().forEach(track => track.stop());
+      stream = null;
+    }
+  }
+
+</script>
 </body>
 </html>
